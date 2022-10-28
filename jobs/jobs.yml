@@ -15,7 +15,7 @@ anchors:
       type: every_hour
 
 jobs:
-  job5:
+  job7:
     <<: *prod_no_dbt_version
     deactivated: false
     deferring_job_definition_id: null
@@ -48,6 +48,7 @@ jobs:
     execute_steps:
     - dbt run-operation clone_all_production_schemas
     - dbt compile
+    - dbt test
     execution:
       timeout_seconds: 0
     generate_docs: false
