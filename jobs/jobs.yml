@@ -70,7 +70,7 @@ jobs:
     custom_environment_variables:
       - DBT_ENV1: My val
       - DBT_ENV2: My val2
-  job3:
+  job4:
     account_id: 43791
     dbt_version: null
     deactivated: false
