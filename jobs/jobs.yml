@@ -1,3 +1,15 @@
+anchors:
+  
+  schedule: &every_hour # using a non-job as an anchor
+    cron: "0 * * * *"
+    date:
+      cron: "0 * * * *"
+      type: "custom_cron"
+    time:
+      hours: null
+      interval: 1
+      type: every_hour
+
 jobs:
   job1:
     account_id: 43791
@@ -15,14 +27,7 @@ jobs:
     name: "My Job 1"
     project_id: 176941
     run_generate_sources: true
-    schedule:
-      cron: "0 */2 * * *"
-      date:
-        cron: "0 */2 * * *"
-        type: "custom_cron"
-      time:
-        type: "every_hour"
-        interval: 1
+    schedule: *every_hour
     settings:
       target_name: production
       threads: 4
@@ -49,15 +54,7 @@ jobs:
     name: CI/CD run
     project_id: 176941
     run_generate_sources: false
-    schedule:
-      cron: "0 * * * *"
-      date:
-        cron: "0 * * * *"
-        type: "custom_cron"
-      time:
-        hours: null
-        interval: 1
-        type: every_hour
+    schedule: *every_hour
     settings:
       target_name: TEST
       threads: 4
