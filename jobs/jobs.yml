@@ -104,7 +104,7 @@ jobs:
       custom_branch_only: true
       git_provider_webhook: false
       github_webhook: true # this job runs from webhooks
-      schedule: false # this doesn't run on a schedule
+      schedule: true # this doesn't run on a schedule
     custom_environment_variables:
       - DBT_ENV1: My val
       - DBT_ENV2: My val2
