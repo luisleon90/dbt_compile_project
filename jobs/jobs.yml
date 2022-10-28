@@ -1,6 +1,10 @@
 anchors:
-  
-  schedule: &every_hour # using a non-job as an anchor
+  prod_no_dbt_version: &prod_no_dbt_version
+    account_id: 43791
+    environment_id: 134459
+    project_id: 176941
+    dbt_version: null
+  every_hour: &every_hour # using a non-job as an anchor
     cron: "0 * * * *"
     date:
       cron: "0 * * * *"
@@ -12,11 +16,9 @@ anchors:
 
 jobs:
   job1:
-    account_id: 43791
-    dbt_version: null
+    <<: *prod_no_dbt_version
     deactivated: false
     deferring_job_definition_id: null
-    environment_id: 134459
     execute_steps:
     - "dbt run --select model1+"
     - "dbt run --select model2+"
@@ -25,7 +27,6 @@ jobs:
     generate_docs: false
     generate_sources: true
     name: "My Job 1"
-    project_id: 176941
     run_generate_sources: true
     schedule: *every_hour
     settings:
@@ -68,11 +69,9 @@ jobs:
       - DBT_ENV1: My val
       - DBT_ENV2: My val2
   job4:
-    account_id: 43791
-    dbt_version: null
+    <<: *prod_no_dbt_version
     deactivated: false
     deferring_job_definition_id: 43791
-    environment_id: 134459
     execute_steps:
     - dbt run-operation clone_all_production_schemas
     - dbt compile
@@ -82,7 +81,6 @@ jobs:
     generate_docs: false
     generate_sources: false
     name: CI/CD run
-    project_id: 176941
     run_generate_sources: false
     schedule:
       cron: "0 * * * *"
