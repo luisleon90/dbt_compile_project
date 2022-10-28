@@ -70,8 +70,8 @@ class DBTCloud:
         """Delete a dbt Cloud job."""
 
         logger.debug("Deleting {job_name}. {job}", job_name=job.name, job=job)
-        logger.warning("Deletion not yet implemented.")
-        return
+#        logger.warning("Deletion not yet implemented.")
+#        return
 
         response = requests.delete(
             url=f"{self.base_url}/api/v2/accounts/{self.account_id}/jobs/{job.id}",

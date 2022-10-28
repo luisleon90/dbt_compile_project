@@ -28,7 +28,7 @@ if __name__ == "__main__":
     for identifier in shared_jobs:
         logger.info("Checking for differences in {identifier}", identifier=identifier)
         if not check_job_mapping_same(
-            source_job=defined_jobs[identifier], dest_job=tracked_jobs[identifier]
+            source_job=tracked_jobs[identifier], dest_job=defined_jobs[identifier]
         ):
             defined_jobs[identifier].id = tracked_jobs[identifier].id
             dbt_cloud.update_job(job=defined_jobs[identifier])
