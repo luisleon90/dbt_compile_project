@@ -1,5 +1,5 @@
 import os
-
+import yaml
 from loguru import logger
 
 from client import DBTCloud
@@ -13,7 +13,12 @@ if __name__ == "__main__":
 
     defined_jobs = load_job_definitions(path)
 
-    dbt_cloud = DBTCloud(account_id=43791, api_key=os.environ.get("API_KEY"))
+    with open('../creds/dbt_cloud.yml') as file:
+        config = yaml.full_load(file)
+
+    api_key = config['api_key']
+
+    dbt_cloud = DBTCloud(account_id=43791, api_key=api_key)
     cloud_jobs = dbt_cloud.get_jobs()
     tracked_jobs = {
         job.identifier: job for job in cloud_jobs if job.identifier is not None
