@@ -26,7 +26,7 @@ jobs:
       timeout_seconds: 0
     generate_docs: false
     generate_sources: true
-    name: "My Job 1"
+    name: "My Job 1 edited"
     run_generate_sources: true
     schedule: *every_hour
     settings:
